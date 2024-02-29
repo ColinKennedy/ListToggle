@@ -54,7 +54,11 @@ function! s:LListToggle() abort
     silent! lclose
 
     if s:BufferCount() == buffer_count_before
-        execute "silent! lopen " . g:lt_height
+        if g:lt_height == 0
+            execute "silent! lopen"
+        else
+            execute "silent! lopen " . g:lt_height
+        endif
     endif
 endfunction
 
@@ -63,7 +67,11 @@ function! s:QListToggle() abort
     silent! cclose
 
     if s:BufferCount() == buffer_count_before
-        execute "silent! botright copen " . g:lt_height
+        if g:lt_height == 0
+            execute "silent! copen"
+        else
+            execute "silent! copen " . g:lt_height
+        endif
     endif
 endfunction
 
